@@ -15,5 +15,5 @@ export const Idiomas_estudiante = mysqlTable("Idiomas_estudiante", {
   password: varchar("password", { length: 255 }),
   //  Fks
   facultad_id: int("facultad_id").references(() => Facultad.id),
-  pais_id: int("pais_id").references(() => Pais.id),
+  pais_id: int("pais_id", { unsigned: true }).references(() => Pais.id),
 });

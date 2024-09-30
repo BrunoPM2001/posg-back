@@ -1,9 +1,192 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "cf2bd3c3-79b5-4387-81e7-d9c54a4f70da",
+  "id": "3cdc1588-7a8a-49ad-ab4d-b97a65c400af",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
+    "Ddf_doc": {
+      "name": "Ddf_doc",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "ddf_tema_id": {
+          "name": "ddf_tema_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "descripcion": {
+          "name": "descripcion",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "archivo": {
+          "name": "archivo",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Ddf_doc_ddf_tema_id_Ddf_tema_id_fk": {
+          "name": "Ddf_doc_ddf_tema_id_Ddf_tema_id_fk",
+          "tableFrom": "Ddf_doc",
+          "tableTo": "Ddf_tema",
+          "columnsFrom": [
+            "ddf_tema_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "Ddf_doc_id": {
+          "name": "Ddf_doc_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "Ddf_foro": {
+      "name": "Ddf_foro",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "facultad_id": {
+          "name": "facultad_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "titulo": {
+          "name": "titulo",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "contenido": {
+          "name": "contenido",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "fecha": {
+          "name": "fecha",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "(now())"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Ddf_foro_facultad_id_Facultad_id_fk": {
+          "name": "Ddf_foro_facultad_id_Facultad_id_fk",
+          "tableFrom": "Ddf_foro",
+          "tableTo": "Facultad",
+          "columnsFrom": [
+            "facultad_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "Ddf_foro_id": {
+          "name": "Ddf_foro_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "Ddf_tema": {
+      "name": "Ddf_tema",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "facultad_id": {
+          "name": "facultad_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "titulo": {
+          "name": "titulo",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "fecha": {
+          "name": "fecha",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "(now())"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Ddf_tema_facultad_id_Facultad_id_fk": {
+          "name": "Ddf_tema_facultad_id_Facultad_id_fk",
+          "tableFrom": "Ddf_tema",
+          "tableTo": "Facultad",
+          "columnsFrom": [
+            "facultad_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "Ddf_tema_id": {
+          "name": "Ddf_tema_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
     "Facultad": {
       "name": "Facultad",
       "columns": {
@@ -56,8 +239,8 @@
         }
       }
     },
-    "Pais": {
-      "name": "Pais",
+    "Idiomas_certificado": {
+      "name": "Idiomas_certificado",
       "columns": {
         "id": {
           "name": "id",
@@ -65,6 +248,920 @@
           "primaryKey": false,
           "notNull": true,
           "autoincrement": true
+        },
+        "id_certificado": {
+          "name": "id_certificado",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "año": {
+          "name": "año",
+          "type": "year",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "nombres": {
+          "name": "nombres",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "paterno": {
+          "name": "paterno",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "materno": {
+          "name": "materno",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "documento": {
+          "name": "documento",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "nivel": {
+          "name": "nivel",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "idioma": {
+          "name": "idioma",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "tipo_certificacion": {
+          "name": "tipo_certificacion",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "fecha_carga": {
+          "name": "fecha_carga",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(now())"
+        },
+        "fecha_inicio": {
+          "name": "fecha_inicio",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "fecha_examen": {
+          "name": "fecha_examen",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "certificado_marcado": {
+          "name": "certificado_marcado",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "certificado": {
+          "name": "certificado",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "Idiomas_certificado_id": {
+          "name": "Idiomas_certificado_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {
+        "Idiomas_certificado_id_certificado_unique": {
+          "name": "Idiomas_certificado_id_certificado_unique",
+          "columns": [
+            "id_certificado"
+          ]
+        }
+      }
+    },
+    "Idiomas_curso": {
+      "name": "Idiomas_curso",
+      "columns": {
+        "codigo": {
+          "name": "codigo",
+          "type": "varchar(10)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "idioma_id": {
+          "name": "idioma_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "programa_id": {
+          "name": "programa_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "nivel_id": {
+          "name": "nivel_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "horario_id": {
+          "name": "horario_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "mes": {
+          "name": "mes",
+          "type": "int unsigned",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "año": {
+          "name": "año",
+          "type": "year",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "modalidad": {
+          "name": "modalidad",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "docente_dni": {
+          "name": "docente_dni",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "fecha_inicio": {
+          "name": "fecha_inicio",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "fecha_fin": {
+          "name": "fecha_fin",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "estado": {
+          "name": "estado",
+          "type": "tinyint",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 0
+        },
+        "seccion": {
+          "name": "seccion",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Idiomas_curso_idioma_id_Idiomas_idioma_id_fk": {
+          "name": "Idiomas_curso_idioma_id_Idiomas_idioma_id_fk",
+          "tableFrom": "Idiomas_curso",
+          "tableTo": "Idiomas_idioma",
+          "columnsFrom": [
+            "idioma_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Idiomas_curso_programa_id_Idiomas_programa_int_fk": {
+          "name": "Idiomas_curso_programa_id_Idiomas_programa_int_fk",
+          "tableFrom": "Idiomas_curso",
+          "tableTo": "Idiomas_programa",
+          "columnsFrom": [
+            "programa_id"
+          ],
+          "columnsTo": [
+            "int"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Idiomas_curso_nivel_id_Idiomas_nivel_id_fk": {
+          "name": "Idiomas_curso_nivel_id_Idiomas_nivel_id_fk",
+          "tableFrom": "Idiomas_curso",
+          "tableTo": "Idiomas_nivel",
+          "columnsFrom": [
+            "nivel_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Idiomas_curso_horario_id_Idiomas_horario_id_fk": {
+          "name": "Idiomas_curso_horario_id_Idiomas_horario_id_fk",
+          "tableFrom": "Idiomas_curso",
+          "tableTo": "Idiomas_horario",
+          "columnsFrom": [
+            "horario_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Idiomas_curso_docente_dni_Idiomas_docente_dni_fk": {
+          "name": "Idiomas_curso_docente_dni_Idiomas_docente_dni_fk",
+          "tableFrom": "Idiomas_curso",
+          "tableTo": "Idiomas_docente",
+          "columnsFrom": [
+            "docente_dni"
+          ],
+          "columnsTo": [
+            "dni"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "Idiomas_curso_codigo": {
+          "name": "Idiomas_curso_codigo",
+          "columns": [
+            "codigo"
+          ]
+        }
+      },
+      "uniqueConstraints": {
+        "Idiomas_curso_codigo_unique": {
+          "name": "Idiomas_curso_codigo_unique",
+          "columns": [
+            "codigo"
+          ]
+        }
+      }
+    },
+    "Idiomas_docente": {
+      "name": "Idiomas_docente",
+      "columns": {
+        "dni": {
+          "name": "dni",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "paterno": {
+          "name": "paterno",
+          "type": "varchar(40)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "materno": {
+          "name": "materno",
+          "type": "varchar(40)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "nombres": {
+          "name": "nombres",
+          "type": "varchar(40)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "celular": {
+          "name": "celular",
+          "type": "varchar(15)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "correo": {
+          "name": "correo",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "estado": {
+          "name": "estado",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "Idiomas_docente_dni": {
+          "name": "Idiomas_docente_dni",
+          "columns": [
+            "dni"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "Idiomas_estudiante": {
+      "name": "Idiomas_estudiante",
+      "columns": {
+        "dni": {
+          "name": "dni",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "tipo_doc": {
+          "name": "tipo_doc",
+          "type": "varchar(40)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "paterno": {
+          "name": "paterno",
+          "type": "varchar(40)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "materno": {
+          "name": "materno",
+          "type": "varchar(40)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "nombres": {
+          "name": "nombres",
+          "type": "varchar(40)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "genero": {
+          "name": "genero",
+          "type": "char",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "fecha_nac": {
+          "name": "fecha_nac",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "correo": {
+          "name": "correo",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "celular": {
+          "name": "celular",
+          "type": "varchar(15)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "facultad_id": {
+          "name": "facultad_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "pais_id": {
+          "name": "pais_id",
+          "type": "int unsigned",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Idiomas_estudiante_facultad_id_Facultad_id_fk": {
+          "name": "Idiomas_estudiante_facultad_id_Facultad_id_fk",
+          "tableFrom": "Idiomas_estudiante",
+          "tableTo": "Facultad",
+          "columnsFrom": [
+            "facultad_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Idiomas_estudiante_pais_id_Pais_id_fk": {
+          "name": "Idiomas_estudiante_pais_id_Pais_id_fk",
+          "tableFrom": "Idiomas_estudiante",
+          "tableTo": "Pais",
+          "columnsFrom": [
+            "pais_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "Idiomas_estudiante_dni": {
+          "name": "Idiomas_estudiante_dni",
+          "columns": [
+            "dni"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "Idiomas_examen_inscripcion": {
+      "name": "Idiomas_examen_inscripcion",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "examen_id": {
+          "name": "examen_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "estudiante_dni": {
+          "name": "estudiante_dni",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "nota": {
+          "name": "nota",
+          "type": "decimal(2,2)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'0.0'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "examen_fk": {
+          "name": "examen_fk",
+          "tableFrom": "Idiomas_examen_inscripcion",
+          "tableTo": "Idiomas_examen",
+          "columnsFrom": [
+            "examen_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "estudiante_fk": {
+          "name": "estudiante_fk",
+          "tableFrom": "Idiomas_examen_inscripcion",
+          "tableTo": "Idiomas_estudiante",
+          "columnsFrom": [
+            "estudiante_dni"
+          ],
+          "columnsTo": [
+            "dni"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "Idiomas_examen_inscripcion_id": {
+          "name": "Idiomas_examen_inscripcion_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "Idiomas_examen": {
+      "name": "Idiomas_examen",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "idioma": {
+          "name": "idioma",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "modalidad": {
+          "name": "modalidad",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "fecha": {
+          "name": "fecha",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "estado": {
+          "name": "estado",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "Idiomas_examen_id": {
+          "name": "Idiomas_examen_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "Idiomas_horario": {
+      "name": "Idiomas_horario",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "hora_inicio": {
+          "name": "hora_inicio",
+          "type": "time",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "hora_fin": {
+          "name": "hora_fin",
+          "type": "time",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "descripcion": {
+          "name": "descripcion",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "Idiomas_horario_id": {
+          "name": "Idiomas_horario_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "Idiomas_idioma": {
+      "name": "Idiomas_idioma",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "idioma": {
+          "name": "idioma",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "Idiomas_idioma_id": {
+          "name": "Idiomas_idioma_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "Idiomas_matricula": {
+      "name": "Idiomas_matricula",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "estudiante_dni": {
+          "name": "estudiante_dni",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "curso_codigo": {
+          "name": "curso_codigo",
+          "type": "varchar(10)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "nota1": {
+          "name": "nota1",
+          "type": "decimal(2,2)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'0.0'"
+        },
+        "nota2": {
+          "name": "nota2",
+          "type": "decimal(2,2)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'0.0'"
+        },
+        "nota3": {
+          "name": "nota3",
+          "type": "decimal(2,2)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'0.0'"
+        },
+        "nota4": {
+          "name": "nota4",
+          "type": "decimal(2,2)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'0.0'"
+        },
+        "promedio": {
+          "name": "promedio",
+          "type": "decimal(2,2)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'0.0'"
+        },
+        "banco": {
+          "name": "banco",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "pago": {
+          "name": "pago",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "monto": {
+          "name": "monto",
+          "type": "int unsigned",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "fecha_pago": {
+          "name": "fecha_pago",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Idiomas_matricula_estudiante_dni_Idiomas_estudiante_dni_fk": {
+          "name": "Idiomas_matricula_estudiante_dni_Idiomas_estudiante_dni_fk",
+          "tableFrom": "Idiomas_matricula",
+          "tableTo": "Idiomas_estudiante",
+          "columnsFrom": [
+            "estudiante_dni"
+          ],
+          "columnsTo": [
+            "dni"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Idiomas_matricula_curso_codigo_Idiomas_curso_codigo_fk": {
+          "name": "Idiomas_matricula_curso_codigo_Idiomas_curso_codigo_fk",
+          "tableFrom": "Idiomas_matricula",
+          "tableTo": "Idiomas_curso",
+          "columnsFrom": [
+            "curso_codigo"
+          ],
+          "columnsTo": [
+            "codigo"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "Idiomas_matricula_id": {
+          "name": "Idiomas_matricula_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "Idiomas_nivel": {
+      "name": "Idiomas_nivel",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "nivel": {
+          "name": "nivel",
+          "type": "varchar(10)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "Idiomas_nivel_id": {
+          "name": "Idiomas_nivel_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {
+        "Idiomas_nivel_nivel_unique": {
+          "name": "Idiomas_nivel_nivel_unique",
+          "columns": [
+            "nivel"
+          ]
+        }
+      }
+    },
+    "Idiomas_programa": {
+      "name": "Idiomas_programa",
+      "columns": {
+        "int": {
+          "name": "int",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "programa": {
+          "name": "programa",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "Idiomas_programa_int": {
+          "name": "Idiomas_programa_int",
+          "columns": [
+            "int"
+          ]
+        }
+      },
+      "uniqueConstraints": {
+        "Idiomas_programa_programa_unique": {
+          "name": "Idiomas_programa_programa_unique",
+          "columns": [
+            "programa"
+          ]
+        }
+      }
+    },
+    "Pais": {
+      "name": "Pais",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int unsigned",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
         },
         "codigo": {
           "name": "codigo",
@@ -229,6 +1326,86 @@
         }
       },
       "uniqueConstraints": {}
+    },
+    "Usuario": {
+      "name": "Usuario",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "facultad_id": {
+          "name": "facultad_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "nickname": {
+          "name": "nickname",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "modulo": {
+          "name": "modulo",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Usuario_facultad_id_Facultad_id_fk": {
+          "name": "Usuario_facultad_id_Facultad_id_fk",
+          "tableFrom": "Usuario",
+          "tableTo": "Facultad",
+          "columnsFrom": [
+            "facultad_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "Usuario_id": {
+          "name": "Usuario_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {
+        "usuarioUnicoPorModulo": {
+          "name": "usuarioUnicoPorModulo",
+          "columns": [
+            "email",
+            "modulo"
+          ]
+        }
+      }
     }
   },
   "_meta": {

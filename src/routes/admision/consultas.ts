@@ -11,6 +11,7 @@ app.get("/dashboard", async (c) => {
     email: "informatica.posgrado@unmsm.edu.pe",
     password: "12345",
     nickname: "Informatica Posgrado",
+    modulo: "Sample",
   });
 
   db.select({

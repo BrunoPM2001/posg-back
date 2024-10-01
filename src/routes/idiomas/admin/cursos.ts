@@ -194,7 +194,7 @@ app.put("/actualizarCurso", async (c) => {
           message: "Información actualizada correctamente",
         });
   } catch (e) {
-    return c.json({ state: "error", message: "Error en esta operación" + e });
+    return c.json({ state: "error", message: "Error en esta operación" });
   }
 });
 

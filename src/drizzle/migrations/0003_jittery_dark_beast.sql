@@ -1,0 +1,1 @@
+ALTER TABLE `Idiomas_curso` MODIFY COLUMN `codigo` varchar(15) NOT NULL;

@@ -13,7 +13,7 @@ import { Idiomas_horario } from "./idiomas_horario";
 import { Idiomas_docente } from "./idiomas_docente";
 
 export const Idiomas_curso = mysqlTable("Idiomas_curso", {
-  codigo: varchar("codigo", { length: 10 }).primaryKey().unique(),
+  codigo: varchar("codigo", { length: 15 }).primaryKey().unique(),
   idioma_id: int("idioma_id")
     .references(() => Idiomas_idioma.id)
     .notNull(),

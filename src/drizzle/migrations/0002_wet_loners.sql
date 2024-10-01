@@ -1,0 +1,1 @@
+ALTER TABLE `Idiomas_horario` ADD CONSTRAINT `horarioUnico` UNIQUE(`hora_inicio`,`hora_fin`,`descripcion`);

@@ -10,6 +10,8 @@ export interface Curso {
   fecha_inicio: Date;
   fecha_fin: Date;
   seccion?: string;
+  docente_dni?: string;
+  estado: number;
 }
 
 export interface Horario {

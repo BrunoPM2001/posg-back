@@ -1,10 +1,8 @@
 import { Hono } from "hono";
 import { jwt } from "hono/jwt";
 import admin from "./admin/index";
-import type { JwtVariables } from "hono/jwt";
-type Variables = JwtVariables;
 
-const app = new Hono<{ Variables: Variables }>();
+const app = new Hono();
 
 app.use(
   "/admin/*",

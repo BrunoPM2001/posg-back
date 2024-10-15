@@ -4,8 +4,11 @@ import "dotenv/config";
 import admision from "./routes/admision/consultas";
 import idiomas from "./routes/idiomas/index";
 import sesion from "./routes/sesion/index";
+import { cors } from "hono/cors";
 
 const app = new Hono().basePath("/api");
+
+app.use(cors());
 
 app.route("/admision", admision);
 app.route("/idiomas", idiomas);

@@ -3,6 +3,7 @@ import {
   decimal,
   int,
   mysqlTable,
+  tinyint,
   varchar,
 } from "drizzle-orm/mysql-core";
 import { Idiomas_estudiante } from "./idiomas_estudiante";
@@ -27,5 +28,6 @@ export const Idiomas_matricula = mysqlTable("Idiomas_matricula", {
   pago: varchar("pago", { length: 50 }).notNull(),
   monto: int("monto", { unsigned: true }).notNull(),
   fecha_pago: date("fecha_pago").notNull(),
-  //  TODO - Por añadir matriculado y aprobado
+  matriculado: tinyint("matriculado", { unsigned: true }).notNull(),
+  aprobado: tinyint("aprobado", { unsigned: true }),
 });

@@ -1,0 +1,1 @@
+ALTER TABLE `Idiomas_curso` MODIFY COLUMN `mes` varchar(7) NOT NULL;

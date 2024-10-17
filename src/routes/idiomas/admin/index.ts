@@ -1,5 +1,6 @@
 import { Hono } from "hono";
 import cursos from "./cursos";
+import docentes from "./docentes";
 import authorizationMiddleware from "../../../middlewares/authorization";
 
 const app = new Hono();
@@ -9,5 +10,6 @@ const app = new Hono();
 
 //  Rutas
 app.route("/cursos", cursos);
+app.route("/docentes", docentes);
 
 export default app;

@@ -1,6 +1,7 @@
 import { Hono } from "hono";
 import { jwt } from "hono/jwt";
 import admin from "./admin/index";
+import estudiante from "./estudiante/index";
 
 const app = new Hono();
 
@@ -12,5 +13,6 @@ const app = new Hono();
 // );
 
 app.route("/admin", admin);
+app.route("/estudiante", estudiante);
 
 export default app;

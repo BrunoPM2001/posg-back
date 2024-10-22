@@ -27,7 +27,7 @@ export const Idiomas_matricula = mysqlTable("Idiomas_matricula", {
   banco: varchar("banco", { length: 20 }).notNull(),
   pago: varchar("pago", { length: 50 }).notNull(),
   monto: int("monto", { unsigned: true }).notNull(),
-  fecha_pago: date("fecha_pago").notNull(),
-  matriculado: tinyint("matriculado", { unsigned: true }).notNull(),
+  fecha_pago: date("fecha_pago", { mode: "string" }).notNull(),
+  matriculado: tinyint("matriculado", { unsigned: true }).notNull().default(0),
   aprobado: tinyint("aprobado", { unsigned: true }),
 });

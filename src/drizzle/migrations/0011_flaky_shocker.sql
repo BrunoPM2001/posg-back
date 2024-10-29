@@ -1,0 +1,1 @@
+ALTER TABLE `Idiomas_matricula` MODIFY COLUMN `voucher` varchar(24);

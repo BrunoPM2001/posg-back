@@ -57,6 +57,34 @@
       "when": 1729629211140,
       "tag": "0007_absurd_magdalene",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1730223006274,
+      "tag": "0008_panoramic_aaron_stack",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1730231138412,
+      "tag": "0009_glorious_alice",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1730231326536,
+      "tag": "0010_daily_meltdown",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "5",
+      "when": 1730232341933,
+      "tag": "0011_flaky_shocker",
+      "breakpoints": true
     }
   ]
 }

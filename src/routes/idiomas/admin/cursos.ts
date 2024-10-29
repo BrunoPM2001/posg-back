@@ -113,8 +113,8 @@ app.get("/cursos", async (c) => {
       idioma: Idiomas_idioma.idioma,
       programa: Idiomas_programa.programa,
       nivel: Idiomas_nivel.nivel,
-      hora_inicio: Idiomas_horario.hora_inicio,
-      hora_fin: Idiomas_horario.hora_fin,
+      hora_inicio: sql<string>`DATE_FORMAT(${Idiomas_horario.hora_inicio}, "%H:%i")`,
+      hora_fin: sql<string>`DATE_FORMAT(${Idiomas_horario.hora_fin}, "%H:%i")`,
       hora_descripcion: Idiomas_horario.descripcion,
       mes: Idiomas_curso.mes,
       modalidad: Idiomas_curso.modalidad,
@@ -125,7 +125,10 @@ app.get("/cursos", async (c) => {
         when ${Idiomas_curso.estado} = 3 then 'Cerrado'
       end`,
       inscritos: sql<number>`ifnull(count(${Idiomas_matricula.id}), 0)`,
-      docente: sql<string>`concat(${Idiomas_docente.paterno}, ' ', ${Idiomas_docente.materno}, ', ', ${Idiomas_docente.nombres})`,
+      docente: sql<string>`concat(
+        ${Idiomas_docente.paterno}, ' ', 
+        ${Idiomas_docente.materno}, ', ', 
+        ${Idiomas_docente.nombres})`,
       seccion: Idiomas_curso.seccion,
     })
     .from(Idiomas_curso)
@@ -174,7 +177,10 @@ app.get("/crearCursoInfo", async (c) => {
   const horarios = await db
     .select({
       value: Idiomas_horario.id,
-      label: sql<string>`concat(${Idiomas_horario.hora_inicio}, ' - ', ${Idiomas_horario.hora_fin}, ' - ', ${Idiomas_horario.descripcion})`,
+      label: sql<string>`concat(
+        DATE_FORMAT(${Idiomas_horario.hora_inicio}, "%H:%i"), ' - ', 
+        DATE_FORMAT(${Idiomas_horario.hora_fin}, "%H:%i"), ' - ', 
+        ${Idiomas_horario.descripcion})`,
     })
     .from(Idiomas_horario);
 
@@ -210,13 +216,20 @@ app.get("/editCursoInfo", async (c) => {
   const horarios = await db
     .select({
       value: Idiomas_horario.id,
-      label: sql<string>`concat(${Idiomas_horario.hora_inicio}, ' - ', ${Idiomas_horario.hora_fin}, ' - ', ${Idiomas_horario.descripcion})`,
+      label: sql<string>`concat(
+        DATE_FORMAT(${Idiomas_horario.hora_inicio}, "%H:%i"), ' - ', 
+        DATE_FORMAT(${Idiomas_horario.hora_fin}, "%H:%i"), ' - ', 
+        ${Idiomas_horario.descripcion})`,
     })
     .from(Idiomas_horario);
   const docentes = await db
     .select({
       value: Idiomas_docente.dni,
-      label: sql<string>`concat(${Idiomas_docente.dni}, ' - ',${Idiomas_docente.paterno}, ' ', ${Idiomas_docente.materno}, ', ', ${Idiomas_docente.nombres})`,
+      label: sql<string>`concat(
+        ${Idiomas_docente.dni}, ' - ',
+        ${Idiomas_docente.paterno}, ' ', 
+        ${Idiomas_docente.materno}, ', ', 
+        ${Idiomas_docente.nombres})`,
     })
     .from(Idiomas_docente);
 
@@ -228,12 +241,15 @@ app.get("/editCursoInfo", async (c) => {
       idioma: Idiomas_idioma.idioma,
       programa: Idiomas_programa.programa,
       nivel: Idiomas_nivel.nivel,
-      horario: sql<string>`concat(${Idiomas_horario.hora_inicio}, ' - ', ${Idiomas_horario.hora_fin}, ' - ', ${Idiomas_horario.descripcion})`,
+      horario: sql<string>`concat(
+        DATE_FORMAT(${Idiomas_horario.hora_inicio}, "%H:%i"), ' - ', 
+        DATE_FORMAT(${Idiomas_horario.hora_fin}, "%H:%i"), ' - ', 
+        ${Idiomas_horario.descripcion})`,
       mes: Idiomas_curso.mes,
       modalidad: Idiomas_curso.modalidad,
       estado: Idiomas_curso.estado,
       inscritos: sql<number>`ifnull(count(${Idiomas_matricula.id}), 0)`,
-      docente: sql<string>`concat(${Idiomas_docente.paterno}, ' ', ${Idiomas_docente.materno}, ', ', ${Idiomas_docente.nombres})`,
+      docente_dni: Idiomas_docente.dni,
       seccion: Idiomas_curso.seccion,
     })
     .from(Idiomas_curso)
@@ -275,7 +291,10 @@ app.get("/inscritos", async (c) => {
     .select({
       tipo_doc: Idiomas_estudiante.tipo_doc,
       dni: Idiomas_estudiante.dni,
-      nombres: sql<string>`concat(${Idiomas_estudiante.paterno}, ' ', ${Idiomas_estudiante.materno}, ', ', ${Idiomas_estudiante.nombres})`,
+      nombres: sql<string>`concat(
+        ${Idiomas_estudiante.paterno}, ' ', 
+        ${Idiomas_estudiante.materno}, ', ', 
+        ${Idiomas_estudiante.nombres})`,
       correo: Idiomas_estudiante.correo,
       celular: Idiomas_estudiante.celular,
       banco: Idiomas_matricula.banco,

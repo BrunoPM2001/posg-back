@@ -14,7 +14,7 @@ export const Idiomas_matricula = mysqlTable("Idiomas_matricula", {
   estudiante_dni: varchar("estudiante_dni", { length: 20 })
     .references(() => Idiomas_estudiante.dni)
     .notNull(),
-  curso_codigo: varchar("curso_codigo", { length: 10 })
+  curso_codigo: varchar("curso_codigo", { length: 15 })
     .references(() => Idiomas_curso.codigo)
     .notNull(),
   nota1: decimal("nota1", { precision: 2, scale: 2 }).notNull().default("0.0"),
@@ -30,4 +30,5 @@ export const Idiomas_matricula = mysqlTable("Idiomas_matricula", {
   fecha_pago: date("fecha_pago", { mode: "string" }).notNull(),
   matriculado: tinyint("matriculado", { unsigned: true }).notNull().default(0),
   aprobado: tinyint("aprobado", { unsigned: true }),
+  voucher: varchar("voucher", { length: 24 }),
 });

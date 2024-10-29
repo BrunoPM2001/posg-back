@@ -1,9 +1,10 @@
 //  Matrícula
 export interface Matricula {
-  codigo: string;
+  curso_codigo: string;
   banco: string;
   pago: string;
-  monto: number;
+  monto: string;
   fecha: string;
-  file: ReadonlyArray<File>;
+  file: File;
+  [x: string]: File | string;
 }

@@ -1,0 +1,1 @@
+ALTER TABLE `Idiomas_matricula` ADD `voucher` varchar(13) NOT NULL;
